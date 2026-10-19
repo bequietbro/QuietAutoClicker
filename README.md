@@ -61,5 +61,5 @@ Developed by <a href="https://github.com/bequietbro">BEQUIETBRO</a>.
 </p>
 
 <p align="center">
-This project is licensed under the <strong>GPLv3</strong> License.
+This project is licensed under the <strong>GNU General Public License v3.0</strong> License.
 </p>
