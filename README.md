@@ -12,9 +12,9 @@
 
 ### [GitHub Releases](https://github.com/bequietbro/QuietAutoClicker/releases)
 
-- `QuietAutoClicker-Linux` — Linux binary (UPX, portable)
+- `QuietAutoClicker-Linux` — Linux binary (portable)
 - `QuietAutoClicker-Linux-x86_64.AppImage` — Portable AppImage for Linux
-- `QuietAutoClicker-Windows.exe` — Windows executable (UPX)
+- `QuietAutoClicker-Windows.exe` — Windows executable
 
 ### AUR
 ```bash
@@ -22,6 +22,7 @@ yay -S quietautoclicker
 ```
 
 <h2 align="center">Usage</h2>
+
 1. **Global hotkeys** — KDE Plasma Wayland: first launch opens a portal dialog to add `F6` (start/stop) and `F7` (add point). They can be changed in KDE System Settings → Keyboard → Shortcuts → QuietAutoClicker.
 2. **Auto-click key** — click the key box and press a key or modifier+key combo. Works in-app on all platforms.
 3. **Sequence Clicking** — enable Advanced Mode → switch to Sequence. Press `F7` at each target to add points (up to 10). Toggle/Loop options available.
