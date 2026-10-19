@@ -7,7 +7,7 @@
 - Mouse (left/right/middle) or keyboard key/shortcut clicking
 - Sequence Clicking: capture up to 10 positions and loop through them (optional smooth interpolation)
 - Toggle or Hold activation, optional time limit
-- Always-on-top, dark theme
+- Always-on-top, dark theme only
 
 <h2 align="center">Installation</h2>
 
