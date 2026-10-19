@@ -25,12 +25,29 @@ yay -S quietautoclicker
 <h2 align="center">Notes</h2>
 
 > So far, it has only been tested on CachyOS KDE Plasma and Fedora KDE Plasma.
+>
+> Found a bug, have a tip or a recommendation? Please open an
+> [issue](https://github.com/bequietbro/QuietAutoClicker/issues) — it helps
+> future fixes and improvements.
 
 - **Linux (Wayland/KDE)**: global hotkeys use XDG GlobalShortcuts portal. On non-KDE or no portal, global hotkeys show as "unavailable"; the auto-click key still works.
 - **X11**: mouse and key clicking work; global hotkeys are not implemented via portal on X11.
 - **GNOME/Hyprland**: native Wayland key injection varies by compositor. Basic clicking works; some native Wayland apps may not receive key combos depending on compositor.
 - **Windows**: maintenance-only (bug fixes, smoke test per release).
 - **Persistence**: only sequence points are saved (`sequence.json`). All other settings reset on launch.
+
+<h2 align="center">FAQ</h2>
+
+**Will macros be added?**
+No. KDE Plasma already includes macro functionality in its system settings.
+On Windows, use [AutoHotkey](https://www.autohotkey.com/) or
+[Microsoft PowerToys](https://learn.microsoft.com/windows/powertoys/).
+
+**Why doesn't `Shift++` work as an auto-click key?**
+Known limitation: combos are stored as `Modifier+...+Key` joined with `+`,
+so the `+` character itself cannot be the main key. A captured `Shift`+`=`
+(stored as `Shift++`) is rejected and the engine falls back to the default
+key (`A`). Use a letter, digit or another symbol instead.
 
 <h2 align="center">Building from source</h2>
 Requires Rust toolchain (no extra system libs):
