@@ -2,6 +2,7 @@
 <h1 align="center">QuietAutoClicker</h1>
 
 <h2 align="center">Features</h2>
+
 - Fixed or randomized click rate
 - Mouse (left/right/middle) or keyboard key/shortcut clicking
 - Sequence Clicking: capture up to 10 positions and loop through them (optional smooth interpolation)
