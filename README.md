@@ -57,9 +57,9 @@ Developed by <a href="https://github.com/bequietbro">BEQUIETBRO</a>.
 <h2 align="center">License</h2>
 
 <p align="center">
-<img src="https://www.gnu.org/graphics/agplv3-155x51.png" alt="AGPLv3 License" />
+<img src="https://www.gnu.org/graphics/gplv3-127x51.png" alt="GPLv3 License" />
 </p>
 
 <p align="center">
-This project is licensed under the <strong>GNU Affero General Public License v3.0</strong>.
+This project is licensed under the <strong>GPLv3</strong> License.
 </p>
