@@ -22,13 +22,8 @@
 yay -S quietautoclicker
 ```
 
-<h2 align="center">Usage</h2>
+<h2 align="center">Notes</h2>
 
-1. **Global hotkeys** — KDE Plasma Wayland: first launch opens a portal dialog to add `F6` (start/stop) and `F7` (add point). They can be changed in KDE System Settings → Keyboard → Shortcuts → QuietAutoClicker.
-2. **Auto-click key** — click the key box and press a key or modifier+key combo. Works in-app on all platforms.
-3. **Sequence Clicking** — enable Advanced Mode → switch to Sequence. Press `F7` at each target to add points (up to 10). Toggle/Loop options available.
-
-## Notes
 - **Linux (Wayland/KDE)**: global hotkeys use XDG GlobalShortcuts portal. On non-KDE or no portal, global hotkeys show as "unavailable"; the auto-click key still works.
 - **X11**: mouse and key clicking work; global hotkeys are not implemented via portal on X11.
 - **GNOME/Hyprland**: native Wayland key injection varies by compositor. Basic clicking works; some native Wayland apps may not receive key combos depending on compositor.
