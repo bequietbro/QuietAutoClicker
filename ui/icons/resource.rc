@@ -1,0 +1,30 @@
+101 ICON "QAC_Logo.ico"
+
+1 VERSIONINFO
+FILEVERSION     1,0,0,0
+PRODUCTVERSION  1,0,0,0
+FILEFLAGSMASK   0x3fL
+FILEFLAGS       0x0L
+FILEOS          0x40004L
+FILETYPE        0x1L
+FILESUBTYPE     0x0L
+BEGIN
+    BLOCK "StringFileInfo"
+    BEGIN
+        BLOCK "040904B0"
+        BEGIN
+            VALUE "CompanyName",      ""
+            VALUE "FileDescription",  "Auto clicker for Windows and Linux"
+            VALUE "FileVersion",      "1.0.0"
+            VALUE "InternalName",     "QuietAutoClicker"
+            VALUE "LegalCopyright",   "Copyright (C) 2026 BEQI"
+            VALUE "OriginalFilename", "QuietAutoClicker.exe"
+            VALUE "ProductName",      "QuietAutoClicker"
+            VALUE "ProductVersion",   "1.0.0"
+        END
+    END
+    BLOCK "VarFileInfo"
+    BEGIN
+        VALUE "Translation", 0x409, 1200
+    END
+END
