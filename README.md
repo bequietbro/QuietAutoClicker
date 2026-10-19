@@ -9,6 +9,7 @@
 - Always-on-top, dark theme
 
 <h2 align="center">Installation</h2>
+
 ### Releases
 Download from [GitHub Releases](https://github.com/bequietbro/QuietAutoClicker/releases):
 - `QuietAutoClicker-Linux` — Linux binary (UPX, portable)
