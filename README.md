@@ -1,14 +1,14 @@
 <p align="center"><img src="https://github.com/user-attachments/assets/17948fa3-7533-45ef-8be5-516b0ca3aec8" alt="QuietAutoClicker" height="100"></p>
 <h1 align="center">QuietAutoClicker</h1>
 
-## Features
+<h2 align="center">Features</h2>
 - Fixed or randomized click rate
 - Mouse (left/right/middle) or keyboard key/shortcut clicking
 - Sequence Clicking: capture up to 10 positions and loop through them (optional smooth interpolation)
 - Toggle or Hold activation, optional time limit
 - Always-on-top, dark theme
 
-## Installation
+<h2 align="center">Installation</h2>
 ### Releases
 Download from [GitHub Releases](https://github.com/bequietbro/QuietAutoClicker/releases):
 - `QuietAutoClicker-Linux` — Linux binary (UPX, portable)
@@ -20,7 +20,7 @@ Download from [GitHub Releases](https://github.com/bequietbro/QuietAutoClicker/r
 yay -S quietautoclicker
 ```
 
-## Usage
+<h2 align="center">Usage</h2>
 1. **Global hotkeys** — KDE Plasma Wayland: first launch opens a portal dialog to add `F6` (start/stop) and `F7` (add point). They can be changed in KDE System Settings → Keyboard → Shortcuts → QuietAutoClicker.
 2. **Auto-click key** — click the key box and press a key or modifier+key combo. Works in-app on all platforms.
 3. **Sequence Clicking** — enable Advanced Mode → switch to Sequence. Press `F7` at each target to add points (up to 10). Toggle/Loop options available.
@@ -32,7 +32,7 @@ yay -S quietautoclicker
 - **Windows**: maintenance-only (bug fixes, smoke test per release).
 - **Persistence**: only sequence points are saved (`sequence.json`). All other settings reset on launch.
 
-## Building from source
+<h2 align="center">Building from source</h2>
 Requires Rust toolchain (no extra system libs):
 
 ```bash
