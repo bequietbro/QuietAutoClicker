@@ -24,7 +24,6 @@ yay -S quietautoclicker
 
 <h2 align="center">Notes</h2>
 
-> [!NOTE]
 > So far, it has only been tested on CachyOS KDE Plasma and Fedora KDE Plasma.
 >
 > Found a bug, have a tip or a recommendation? Please open an
