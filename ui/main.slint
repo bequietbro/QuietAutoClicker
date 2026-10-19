@@ -205,20 +205,11 @@ component VDivider {
     }
 }
 
-// Brand checkbox: a plain hand-built square whose border + fill turn the brand
-// green (#19c233) when checked, so it looks identical on every platform and
-// renderer (the std-widgets CheckBox follows the compile-time widget style and
-// also the OS, which is why Windows rendered a black outline + blue check). The
-// active green matches the advanced-mode hamburger and the always-on-top pin.
 component BrandCheckBox {
     in-out property <bool> checked;
     in property <bool> enabled: true;
     in property <bool> is-dark-theme;
 
-    // Fixed horizontal footprint in the row; the row layout stretches the root
-    // vertically (default cross-axis `stretch` alignment), so the 18px square is
-    // centered inside rather than parked at the top of the row — restoring the
-    // old std CheckBox's vertical centering on every platform.
     width: 18px;
     preferred-height: 18px;
     min-height: 18px;
@@ -321,10 +312,6 @@ export component MainWindow inherits Window {
     in-out property <length> sequence-scroll-offset: 0px;
     property <length> sequence-scrollbar-thumb: max(40px, 170px * (170px / max(root.sequence-points-count * 44px + 6px, 171px)));
     property <bool> sequence-scrollbar-visible: root.sequence-points-count * 44px + 6px > 170px;
-    // UI-reset: on Wayland a TouchArea that triggered a window state change
-    // (drag move, advanced-mode toggle) can keep a stale pointer grab after the
-    // resize, so later clicks land on nothing. Flipping this hides the titlebar
-    // touch areas (releasing the grab); the Timer restores them 50ms later.
     in-out property <bool> ui-reset: false;
     ui-reset-timer := Timer {
         interval: 50ms;
@@ -349,10 +336,6 @@ export component MainWindow inherits Window {
     callback request-capture-key();
     callback reset-click-key();
     callback open-shortcut-settings();
-    // In-app key capture fallback. The .slint Named-key guards map a pressed
-    // key to the same names rdev/KDE report ("F1", "Space", "Up", ...);
-    // printable keys arrive as their single character. Returns true when a
-    // capture consumed the key.
     callback capture-input(string, bool, bool, bool, bool, bool) -> bool;
 
     forward-focus: key-focus;
@@ -360,13 +343,6 @@ export component MainWindow inherits Window {
         width: 100%;
         height: 100%;
         focus-on-click: false;
-        // On Linux the portal 'clickkey' action was removed because KGlobalAccel
-        // grabbed it system-wide; the auto-click key is captured here instead.
-        // On Windows this is also the fallback that completes a "Press..."
-        // capture when the global rdev hook is down. `capture-key-pressed` runs
-        // before normal key delivery no matter which inner element has focus, so
-        // it works while a TextInput is focused; we only consume when Rust
-        // confirms a capture is armed, otherwise reject and let typing through.
         capture-key-pressed(event) => {
             if (event.repeat) { reject }
             else if (event.text == Key.F1) { root.capture-input("F1", event.repeat, event.modifiers.control, event.modifiers.shift, event.modifiers.alt, event.modifiers.meta); accept }
@@ -406,10 +382,6 @@ export component MainWindow inherits Window {
 
         Rectangle {
             border-radius: 10px;
-            // No `clip: true` here: the Windows software renderer (forced for
-            // reliable per-pixel alpha, see main.rs) cannot combine border-radius
-            // with clip. The corners stay rounded because the titlebar is
-            // transparent and the content is inset by the 8px padding below.
             border-width: 1px;
             border-color: is-dark-theme ? rgba(251, 254, 254, 0.1) : rgba(0, 0, 0, 0.18);
             background: is-dark-theme ? #0c0c0e : #e5dfe7;
@@ -425,7 +397,7 @@ export component MainWindow inherits Window {
 
                         Rectangle { width: 8px; }
 
-                        // Hamburger
+                        
 if !root.ui-reset : Rectangle {
                             width: 32px;
                             height: 32px;
@@ -458,7 +430,7 @@ if !root.ui-reset : Rectangle {
                             animate background { duration: 150ms; }
                         }
 
-                        // Pin
+                        
                         if !root.ui-reset : Rectangle {
                             width: 32px;
                             height: 32px;
@@ -726,8 +698,7 @@ if !root.ui-reset : Rectangle {
                                     }
                                 }
                                 if root.hotkey-editable && hotkey != "F6" : Rectangle {
-                                    // Windows: the X only appears when the bind is custom
-                                    // (different from the factory default F6).
+                                    // X clears a custom (non-default) bind
                                     width: 20px;
                                     border-radius: 6px;
                                     background: clear-btn.has-hover ? rgba(255,117,107,0.15) : transparent;
@@ -747,10 +718,7 @@ if !root.ui-reset : Rectangle {
                                     }
                                 }
                                 if !root.hotkey-editable : Rectangle {
-                                    // Linux (KDE Wayland): bindings live in KDE System Settings,
-                                    // so offer a pencil shortcut to that page instead of in-app
-                                    // capture. Always available; square here so it lines up with
-                                    // the X (same 30px row height) like the seq row below.
+                                    // Linux: binds live in KDE System Settings — pencil opens that page
                                     width: 30px;
                                     height: 30px;
                                     border-radius: 6px;
@@ -802,11 +770,8 @@ if !root.ui-reset : Rectangle {
                             horizontal-stretch: 1;
                         }
                         if input-type == 1 : Rectangle {
-                            // Auto-click key: click to capture any physical key
-                            // (letters, digits, space, backspace, arrows, F-keys)
-                            // or a modifier combo (hold Ctrl/Shift/Alt/Meta and
-                            // tap the key, e.g. Ctrl+Shift+J).
-                            // A text field couldn't represent non-printable keys.
+                            // Captures a physical key or a modifier combo (Shift+J);
+                            // a text field couldn't represent non-printable keys.
                             height: 30px;
                             background: transparent;
                             clip: true;
@@ -918,10 +883,7 @@ if !root.ui-reset : Rectangle {
                     }
 
                     if root.advanced-mode : Rectangle {
-                        // Sequence Clicking is mouse-only by design (the engine
-                        // never runs it when input_type is Key); dim the whole
-                        // section AND disable its controls so the two input modes
-                        // can't look like they combine or be toggled under Key.
+                        // Sequence Clicking is mouse-only
                         opacity: input-type == 1 ? 0.45 : 1.0;
                         border-radius: 6px;
                         border-width: 1px;
@@ -980,9 +942,7 @@ if !root.ui-reset : Rectangle {
                                                 }
                                             }
                                             if !root.sequence-hotkey-editable : Rectangle {
-                                                // Linux (KDE Wayland): pencil opens the System
-                                                // Settings page for our shortcuts. Always available;
-                                                // square and full-height to match the toggle row.
+                                                // Linux: pencil opens KDE System Settings for our binds
                                                 width: 30px;
                                                 height: 30px;
                                                 border-radius: 6px;
@@ -1037,9 +997,8 @@ if !root.ui-reset : Rectangle {
                                 }
                                 HorizontalLayout { spacing: 4px;
                                     BrandCheckBox {
-                                        // Sequence Clicking is mouse-only: with Key chosen the
-                                        // enabled box, sub-checks and edit controls are all dead
-                                        // (the poll also forces sequence-enabled off under Key).
+                                        // Mouse-only: with Key chosen everything here is
+                                        // disabled (the poll also forces sequence-enabled off)
                                         enabled: input-type == 0;
                                         checked <=> root.sequence-enabled;
                                         is-dark-theme: root.is-dark-theme;
@@ -1321,19 +1280,15 @@ if !root.ui-reset : Rectangle {
                                     }
                                 }
                                 if root.sequence-enabled : Rectangle {
-                                    // No clip: the software renderer (used in some Windows VMs)
-                                    // does not combine border-radius with clip:true and drops the
-                                    // text. The strip has a fixed height and no overflow, so it
-                                    // does not need clipping.
+                                    // No clip: the software renderer combines neither
+                                    // border-radius nor clip:true with text (it drops it).
                                     height: 30px;
                                     border-radius: 6px;
                                     border-width: 1px;
                                     border-color: is-dark-theme ? rgba(251,254,254,0.12) : rgba(0,0,0,0.14);
                                     background: is-dark-theme ? rgba(251,254,254,0.06) : rgba(0,0,0,0.05);
-                                    // Both the layout and the Text stretch against the
-                                    // rectangle's definite 30px height — a Text sized with
-                                    // percentages inside an auto-height layout collapses to
-                                    // zero (no visible text, only the frame).
+                                    // Text must stretch against the fixed 30px height —
+                                    // percentage sizes inside an auto-height layout collapse to 0.
                                     HorizontalLayout { width: 100%; height: 100%; padding-left: 8px; padding-right: 8px;
                                         Text {
                                             text: root.sequence-capture-hint;
@@ -1350,9 +1305,9 @@ if !root.ui-reset : Rectangle {
                             }
                         }
                     }
-                }   // close rows VerticalLayout
-            }       // close VerticalLayout
-        }           // close outer Rectangle
-    }               // close outer VerticalLayout
-    }               // close key-focus FocusScope
-}               // close MainWindow
+                }
+            }
+        }
+        }
+    }
+}
