@@ -1,4 +1,4 @@
-<img width="256" height="256" alt="QuietAutoClicker" src="https://github.com/user-attachments/assets/17948fa3-7533-45ef-8be5-516b0ca3aec8" />
+<p align="center"><img src="https://github.com/user-attachments/assets/17948fa3-7533-45ef-8be5-516b0ca3aec8" alt="QuietAutoClicker" height="100"></p>
 <h1 align="center">QuietAutoClicker</h1>
 Lightweight native auto-clicker with a compact frameless GUI. Built with [Slint](https://slint.dev) and Rust.
 
