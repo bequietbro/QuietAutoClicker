@@ -24,6 +24,8 @@ yay -S quietautoclicker
 
 <h2 align="center">Notes</h2>
 
+> So far, it has only been tested on CachyOS KDE Plasma and Fedora KDE Plasma.
+
 - **Linux (Wayland/KDE)**: global hotkeys use XDG GlobalShortcuts portal. On non-KDE or no portal, global hotkeys show as "unavailable"; the auto-click key still works.
 - **X11**: mouse and key clicking work; global hotkeys are not implemented via portal on X11.
 - **GNOME/Hyprland**: native Wayland key injection varies by compositor. Basic clicking works; some native Wayland apps may not receive key combos depending on compositor.
