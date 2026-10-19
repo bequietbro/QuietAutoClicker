@@ -10,8 +10,8 @@
 
 <h2 align="center">Installation</h2>
 
-### Releases
-Download from [GitHub Releases](https://github.com/bequietbro/QuietAutoClicker/releases):
+### [GitHub Releases](https://github.com/bequietbro/QuietAutoClicker/releases)
+
 - `QuietAutoClicker-Linux` — Linux binary (UPX, portable)
 - `QuietAutoClicker-Linux-x86_64.AppImage` — Portable AppImage for Linux
 - `QuietAutoClicker-Windows.exe` — Windows executable (UPX)
