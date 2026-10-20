@@ -17,11 +17,6 @@
 - `QuietAutoClicker-Linux-x86_64.AppImage` — Portable AppImage for Linux
 - `QuietAutoClicker-Windows.exe` — Windows executable
 
-### AUR
-```bash
-yay -S quietautoclicker
-```
-
 <h2 align="center">Notes</h2>
 
 > So far, it has only been tested on CachyOS KDE Plasma and Fedora KDE Plasma.
