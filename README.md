@@ -1,6 +1,6 @@
 <p align="center"><img src="https://github.com/user-attachments/assets/17948fa3-7533-45ef-8be5-516b0ca3aec8" alt="QuietAutoClicker" height="100"></p>
 <h1 align="center">QuietAutoClicker</h1>
-<img width="370" height="300" alt="image" src="https://github.com/user-attachments/assets/1b31c6c4-b440-40d6-9726-925344e9cc58" />
+<p align="center"><img width="370" height="300" alt="image" src="https://github.com/user-attachments/assets/1b31c6c4-b440-40d6-9726-925344e9cc58"/></p>
 <h2 align="center">Features</h2>
 
 - Fixed or randomized click rate
